@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{updateMode}} {{this.courseInfo?.Name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+
+    <div class="row" [formGroup]="courseForm">
+        <div class="mb-3">
+            <label for="txtName" class="form-label" [ngClass]="{'label-error': courseForm && (courseForm.controls.Name.invalid) && (courseForm.controls.Name.dirty || courseForm.controls.Name.touched) }">Name</label>
+            <input type="text" class="form-control" autocomplete="off" id="txtName" formControlName="Name" placeholder="Course Name" [ngClass]="{'input-element-error': courseForm && (courseForm.controls.Name.invalid) && (courseForm.controls.Name.dirty || courseForm.controls.Name.touched) }">
+        </div>
+
+        <div class="mb-3">
+            <label for="txtShortName" class="form-label" [ngClass]="{'label-error': courseForm && (courseForm.controls.ShortName.invalid) && (courseForm.controls.ShortName.dirty || courseForm.controls.ShortName.touched) }">Short
+                Name</label>
+            <input type="text" class="form-control" autocomplete="off" id="txtShortName" formControlName="ShortName" placeholder="Course Short Name" [ngClass]="{'input-element-error': courseForm && (courseForm.controls.ShortName.invalid) && (courseForm.controls.ShortName.dirty || courseForm.controls.ShortName.touched) }">
+        </div>
+
+        <div class="mb-3">
+            <label for="txtDepartment" class="form-label" [ngClass]="{'label-error': courseForm && (courseForm.controls.Department.invalid) && (courseForm.controls.Department.dirty || courseForm.controls.Department.touched) }">Department</label>
+            <select for="txtDepartment" class="form-select form-control" formControlName="Department">
+                <option value="0">Select Department</option>
+                <option *ngFor="let dept of departmentList" value="{{dept.ID}}">{{dept.Name}}</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="txtSDate" class="form-label" [ngClass]="{'label-error': courseForm && (courseForm.controls.CourseStartDate.invalid) && (courseForm.controls.CourseStartDate.dirty || courseForm.controls.CourseStartDate.touched) }">Course
+                Start Date</label>
+            <input type="date" class="form-control" autocomplete="off" id="txtSDate" formControlName="CourseStartDate" [ngClass]="{'input-element-error': courseForm && (courseForm.controls.CourseStartDate.invalid) && (courseForm.controls.CourseStartDate.dirty || courseForm.controls.CourseStartDate.touched) }">
+        </div>
+
+        <div class="mb-3">
+            <label for="txtEDate" class="form-label" [ngClass]="{'label-error': courseForm && (courseForm.controls.CourseEndDate.invalid) && (courseForm.controls.CourseEndDate.dirty || courseForm.controls.CourseEndDate.touched) }">Course
+                End Date</label>
+            <input type="date" class="form-control" autocomplete="off" id="txtEDate" formControlName="CourseEndDate" [ngClass]="{'input-element-error': courseForm && (courseForm.controls.CourseEndDate.invalid) && (courseForm.controls.CourseEndDate.dirty || courseForm.controls.CourseEndDate.touched) }">
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" [ngClass]="{'disabled': courseForm.pristine || courseForm.invalid}" (click)="saveCourse()">Submit</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+</div>

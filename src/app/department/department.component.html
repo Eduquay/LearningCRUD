@@ -1,0 +1,50 @@
+<div class="container-fluid mt-5">
+    <div class="card">
+        <div class="card-header text-white bg-secondary">
+            Department Master
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="text" id="searchText" class="form-control" placeholder="Search By" [(ngModel)]="searchText" (ngModelChange)="searchedText()">
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-rht">
+                    <button type="button" class="btn btn-primary" (click)="insertDepartment()">
+                        <i class=" fa fa-plus" aria-hidden="true"></i>
+                        Add</button>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div *ngIf="errorMessage !== ''" class="alert" [ngClass]="alertType">{{errorMessage}}</div>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Sr. No</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of departmentSearchedList; index as i">
+                                <td>{{i+1}}</td>
+                                <td style="display: none">{{item.ID}}</td>
+                                <td>{{item.Name}}</td>
+                                <td>
+                                    <div class="text-center">
+                                        <a class="pointer px-2" style="cursor: pointer;" (click)="editDepartment(item)"><i
+                                                class="fas fa-edit text-center"></i></a>
+                                        <a class="pointer" style="cursor: pointer;" (click)="removeDepartment(item)"><i
+                                                class="fas fa-trash text-danger"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{updateMode}} {{this.adminInfo?.Name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+
+    <div class="row" [formGroup]="userForm">
+        <div class="mb-3">
+            <label for="txtName" class="form-label" [ngClass]="{'label-error': userForm && (userForm.controls.Name.invalid) && (userForm.controls.Name.dirty || userForm.controls.Name.touched) }">Name</label>
+            <input type="text" class="form-control" id="txtName" [ngClass]="{'input-element-error': userForm && (userForm.controls.Name.invalid) && (userForm.controls.Name.dirty || userForm.controls.Name.touched) }" formControlName="Name" placeholder="Name" autocomplete="off">
+        </div>
+        <div class="mb-3">
+            <label for="txtEmailID" class="form-label" [ngClass]="{'label-error': userForm && (userForm.controls.EmailID.invalid) && (userForm.controls.EmailID.dirty || userForm.controls.EmailID.touched) }">Email ID</label>
+            <input type="text" class="form-control" id="txtEmailID" formControlName="EmailID" [ngClass]="{'input-element-error': userForm && (userForm.controls.EmailID.invalid) && (userForm.controls.EmailID.dirty || userForm.controls.EmailID.touched) }" placeholder="Email ID"
+                autocomplete="off">
+        </div>
+
+        <div class="mb-3">
+            <label for="txtMobileNo" class="form-label" [ngClass]="{'label-error': userForm && (userForm.controls.MobileNo.invalid) && (userForm.controls.MobileNo.dirty || userForm.controls.MobileNo.touched) }">Mobile No</label>
+            <input type="text" class="form-control" id="txtMobileNo" [ngClass]="{'input-element-error': userForm && (userForm.controls.MobileNo.invalid) && (userForm.controls.MobileNo.dirty || userForm.controls.MobileNo.touched) }" formControlName="MobileNo" placeholder="Mobile No"
+                autocomplete="off">
+        </div>
+
+        <div class="mb-3">
+            <label for="txtAddress" class="form-label" [ngClass]="{'label-error': userForm && (userForm.controls.Address.invalid) && (userForm.controls.Address.dirty || userForm.controls.Address.touched) }">Address</label>
+            <input type="text" class="form-control" id="txtAddress" formControlName="Address" [ngClass]="{'input-element-error': userForm && (userForm.controls.Address.invalid) && (userForm.controls.Address.dirty || userForm.controls.Address.touched) }" placeholder="Address"
+                autocomplete="off">
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" [ngClass]="{'disabled': userForm.pristine || userForm.invalid}" (click)="saveProduct()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+</div>

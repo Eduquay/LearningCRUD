@@ -1,0 +1,57 @@
+<div class="container-fluid mt-5">
+    <div class="card">
+        <div class="card-header text-white bg-secondary">
+            Admin Master
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="text" id="searchText" class="form-control" placeholder="Search By" [(ngModel)]="searchText" (ngModelChange)="fineGrained()">
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-rht">
+                    Seach count: {{AdminSearchedList.length}}
+                    <button type="button" class="btn btn-primary" (click)="insertAdmin()">
+                        <i class=" fa fa-plus" aria-hidden="true"></i>
+                        Add</button>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div *ngIf="errorMessage !== ''" class="alert" [ngClass]="alertType">{{errorMessage}}</div>
+                </div>
+                <div class="col-md-12 mt-3 search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false" (scrolled)="onScroll()">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Sr. No</th>
+                                <th>Name</th>
+                                <th>Email ID</th>
+                                <th>Mobile No</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of AdminList; index as i">
+                                <td>{{i+1}}</td>
+                                <td style="display: none">{{item.ID}}</td>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.EmailID}}</td>
+                                <td>{{item.MobileNo}}</td>
+                                <td>{{item.Address}}</td>
+                                <td>
+                                    <div class="text-center">
+                                        <a class="pointer px-2" style="cursor: pointer;" (click)="editAdmin(item)"><i
+                                                class="fas fa-edit text-center"></i></a>
+                                        <a class="pointer" style="cursor: pointer;" (click)="removeProduct(item)"><i
+                                                class="fas fa-trash text-danger"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

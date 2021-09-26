@@ -1,0 +1,8 @@
+.text-rht {
+    text-align: right!important;
+}
+
+.search-results {
+    height: 30rem;
+    overflow: scroll;
+}
